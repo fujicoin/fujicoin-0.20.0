@@ -106,6 +106,7 @@ FUJICOIN_CORE_H = \
   banman.h \
   base58.h \
   bech32.h \
+  bignum.h \
   bloom.h \
   blockencodings.h \
   blockfilter.h \
@@ -391,7 +392,9 @@ crypto_libfujicoin_crypto_base_a_SOURCES = \
   crypto/sha512.cpp \
   crypto/sha512.h \
   crypto/siphash.cpp \
-  crypto/siphash.h
+  crypto/siphash.h \
+  crypto/scrypt.cpp \
+  crypto/scrypt.h
 
 if USE_ASM
 crypto_libfujicoin_crypto_base_a_SOURCES += crypto/sha256_sse4.cpp
