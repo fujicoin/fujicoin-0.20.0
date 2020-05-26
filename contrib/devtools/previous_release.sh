@@ -98,7 +98,7 @@ pushd "$TARGET" || exit 1
           exit 1
         fi
 
-        git clone https://github.com/fujicoin/fujicoin "$tag"
+        git clone https://github.com/bitcoin/bitcoin "$tag"
         pushd "$tag" || exit 1
         {
           git checkout "$tag"
@@ -137,7 +137,7 @@ pushd "$TARGET" || exit 1
         else
             BIN_PATH="bin/fujicoin-core-${tag:1}"
         fi
-        URL="https://fujicoin.org/$BIN_PATH/fujicoin-${tag:1}-$PLATFORM.tar.gz"
+        URL="https://bitcoin.org/$BIN_PATH/bitcoin-${tag:1}-$PLATFORM.tar.gz"
         echo "Fetching: $URL"
         if ! curl -O -f $URL; then
             echo "Download failed."

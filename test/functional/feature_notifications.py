@@ -103,7 +103,7 @@ class NotificationsTest(FujicoinTestFramework):
 
             # Generate bump transaction, sync mempools, and check for bump1
             # notification. In the future, per
-            # https://github.com/fujicoin/fujicoin/pull/9371, it might be better
+            # https://github.com/bitcoin/bitcoin/pull/9371, it might be better
             # to have notifications for both tx1 and bump1.
             bump1 = self.nodes[0].bumpfee(tx1)["txid"]
             assert_equal(bump1 in self.nodes[0].getrawmempool(), True)
@@ -129,8 +129,8 @@ class NotificationsTest(FujicoinTestFramework):
             # only the bump2 notification is sent. Ideally, notifications would
             # be sent both for bump2 and tx2, which was the previous behavior
             # before being broken by an accidental change in PR
-            # https://github.com/fujicoin/fujicoin/pull/16624. The bug is reported
-            # in issue https://github.com/fujicoin/fujicoin/issues/18325.
+            # https://github.com/bitcoin/bitcoin/pull/16624. The bug is reported
+            # in issue https://github.com/bitcoin/bitcoin/issues/18325.
             disconnect_nodes(self.nodes[0], 1)
             bump2 = self.nodes[0].bumpfee(tx2)["txid"]
             self.nodes[0].generatetoaddress(1, ADDRESS_BCRT1_UNSPENDABLE)
