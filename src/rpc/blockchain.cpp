@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2009-2019 The Fujicoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -375,7 +375,7 @@ static UniValue getdifficulty(const JSONRPCRequest& request)
 
 static std::vector<RPCResult> MempoolEntryDescription() { return {
     RPCResult{RPCResult::Type::NUM, "vsize", "virtual transaction size as defined in BIP 141. This is different from actual serialized size for witness transactions as witness data is discounted."},
-    RPCResult{RPCResult::Type::NUM, "size", "(DEPRECATED) same as vsize. Only returned if bitcoind is started with -deprecatedrpc=size\n"
+    RPCResult{RPCResult::Type::NUM, "size", "(DEPRECATED) same as vsize. Only returned if fujicoind is started with -deprecatedrpc=size\n"
                                             "size will be completely removed in v0.20."},
     RPCResult{RPCResult::Type::NUM, "weight", "transaction weight as defined in BIP 141."},
     RPCResult{RPCResult::Type::STR_AMOUNT, "fee", "transaction fee in " + CURRENCY_UNIT + " (DEPRECATED)"},
@@ -1018,8 +1018,8 @@ UniValue gettxout(const JSONRPCRequest& request)
                                 {RPCResult::Type::STR_HEX, "hex", ""},
                                 {RPCResult::Type::NUM, "reqSigs", "Number of required signatures"},
                                 {RPCResult::Type::STR_HEX, "type", "The type, eg pubkeyhash"},
-                                {RPCResult::Type::ARR, "addresses", "array of bitcoin addresses",
-                                    {{RPCResult::Type::STR, "address", "bitcoin address"}}},
+                                {RPCResult::Type::ARR, "addresses", "array of fujicoin addresses",
+                                    {{RPCResult::Type::STR, "address", "fujicoin address"}}},
                             }},
                         {RPCResult::Type::BOOL, "coinbase", "Coinbase or not"},
                     }},
@@ -2294,7 +2294,7 @@ UniValue dumptxoutset(const JSONRPCRequest& request)
         // use below this block.
         //
         // See discussion here:
-        //   https://github.com/bitcoin/bitcoin/pull/15606#discussion_r274479369
+        //   https://github.com/fujicoin/fujicoin/pull/15606#discussion_r274479369
         //
         LOCK(::cs_main);
 

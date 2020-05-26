@@ -145,10 +145,10 @@
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>FujicoinGUI</name>
     <message>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>ផ្ញើកាក់ទៅកាន់ អាសយដ្ឋាន Bitcoin មួយ</translation>
+        <source>Send coins to a Fujicoin address</source>
+        <translation>ផ្ញើកាក់ទៅកាន់ អាសយដ្ឋាន Fujicoin មួយ</translation>
     </message>
     </context>
 <context>
@@ -310,6 +310,6 @@
     </message>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>fujicoin-core</name>
     </context>
 </TS>

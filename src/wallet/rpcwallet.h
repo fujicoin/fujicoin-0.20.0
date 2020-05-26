@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2019 The Bitcoin Core developers
+// Copyright (c) 2016-2019 The Fujicoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_RPCWALLET_H
-#define BITCOIN_WALLET_RPCWALLET_H
+#ifndef FUJICOIN_WALLET_RPCWALLET_H
+#define FUJICOIN_WALLET_RPCWALLET_H
 
 #include <memory>
 #include <string>
@@ -44,4 +44,4 @@ LegacyScriptPubKeyMan& EnsureLegacyScriptPubKeyMan(CWallet& wallet, bool also_cr
 
 UniValue getaddressinfo(const JSONRPCRequest& request);
 UniValue signrawtransactionwithwallet(const JSONRPCRequest& request);
-#endif //BITCOIN_WALLET_RPCWALLET_H
+#endif //FUJICOIN_WALLET_RPCWALLET_H

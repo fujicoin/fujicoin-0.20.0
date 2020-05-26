@@ -1,12 +1,12 @@
-// Copyright (c) 2011-2019 The Bitcoin Core developers
+// Copyright (c) 2011-2019 The Fujicoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINGUI_H
-#define BITCOIN_QT_BITCOINGUI_H
+#ifndef FUJICOIN_QT_FUJICOINGUI_H
+#define FUJICOIN_QT_FUJICOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#include <config/fujicoin-config.h>
 #endif
 
 #include <qt/optionsdialog.h>
@@ -58,18 +58,18 @@ class ClickableProgressBar;
 }
 
 /**
-  Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
+  Fujicoin GUI main class. This class represents the main window of the Fujicoin UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class BitcoinGUI : public QMainWindow
+class FujicoinGUI : public QMainWindow
 {
     Q_OBJECT
 
 public:
     static const std::string DEFAULT_UIPLATFORM;
 
-    explicit BitcoinGUI(interfaces::Node& node, const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = nullptr);
-    ~BitcoinGUI();
+    explicit FujicoinGUI(interfaces::Node& node, const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = nullptr);
+    ~FujicoinGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
@@ -81,7 +81,7 @@ public:
 
 #ifdef ENABLE_WALLET
     /** Set the wallet model.
-        The wallet model represents a bitcoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a fujicoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void addWallet(WalletModel* walletModel);
@@ -339,4 +339,4 @@ private Q_SLOTS:
     void onMenuSelection(QAction* action);
 };
 
-#endif // BITCOIN_QT_BITCOINGUI_H
+#endif // FUJICOIN_QT_FUJICOINGUI_H

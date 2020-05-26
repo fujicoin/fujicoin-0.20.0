@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The Bitcoin Core developers
+// Copyright (c) 2019 The Fujicoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -24,8 +24,8 @@ void test_one_input(const std::vector<uint8_t>& buffer)
     if (result_try_witness_and_maybe_no_witness) {
         assert(result_try_no_witness || result_try_witness);
     }
-    // if (result_try_no_witness) { // Uncomment when https://github.com/bitcoin/bitcoin/pull/17775 is merged
-    if (result_try_witness) { // Remove stop-gap when https://github.com/bitcoin/bitcoin/pull/17775 is merged
+    // if (result_try_no_witness) { // Uncomment when https://github.com/fujicoin/fujicoin/pull/17775 is merged
+    if (result_try_witness) { // Remove stop-gap when https://github.com/fujicoin/fujicoin/pull/17775 is merged
         assert(result_try_witness_and_maybe_no_witness);
     }
 }
