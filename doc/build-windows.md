@@ -72,7 +72,7 @@ If you want to build the windows installer with `make deploy` you need [NSIS](ht
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/bitcoin/bitcoin.git
+    git clone https://github.com/fujicoin/fujicoin.git
     cd fujicoin
 
 ## Building for 64-bit Windows
@@ -91,15 +91,60 @@ Note that for WSL the Fujicoin Core source path MUST be somewhere in the default
 example /usr/src/fujicoin, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that is located directly on the host Windows file system to perform the build.
 
-Build using:
+Acquire the source in the usual way:
 
-    PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g') # strip out problematic Windows %PATH% imported var
+    git clone https://github.com/fujicoin/fujicoin.git
+
+Once the source code is ready the build steps are below:
+
+Do not compile tests and bench.
+
+    PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g') # strip out problematic Windows %PATH% imported var, not required for Ubuntu
     cd depends
     make HOST=x86_64-w64-mingw32
     cd ..
-    ./autogen.sh # not required when building from tarball
-    CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
-    make
+    mkdir dist
+    ./autogen.sh
+    CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=$PWD/dist --disable-tests --disable-bench --disable-dependency-tracking
+    make install
+    cd dist/bin
+    strip fujicoin-cli.exe fujicoind.exe fujicoin-qt.exe fujicoin-tx.exe
+
+
+## Building for 32-bit Windows
+
+To build executables for Windows 32-bit, install the following dependencies:
+
+    sudo apt install g++-mingw-w64-i686 mingw-w64-i686-dev
+
+For Ubuntu Bionic 18.04 and Windows Subsystem for Linux <sup>[1](#footnote1)</sup>:
+
+    sudo update-alternatives --config i686-w64-mingw32-g++  # Set the default mingw32 g++ compiler option to posix.
+
+Note that for WSL the Fujicoin Core source path MUST be somewhere in the default mount file system, for
+example /usr/src/fujicoin, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
+This means you cannot use a directory that located directly on the host Windows file system to perform the build.
+
+Acquire the source in the usual way:
+
+    git clone https://github.com/fujicoin/fujicoin.git
+
+Then build using:
+
+Do not compile tests and bench.
+
+    PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g') # strip out problematic Windows %PATH% imported var, not required for Ubuntu
+    cd depends
+    make HOST=i686-w64-mingw32
+    cd ..
+    mkdir dist
+    ./autogen.sh
+    CONFIG_SITE=$PWD/depends/i686-w64-mingw32/share/config.site ./configure --prefix=$PWD/dist --disable-tests --disable-bench --disable-dependency-tracking
+    strip src/fujicoin-cli.exe src/fujicoin-tx.exe src/fujicoind.exe src/qt/fujicoin-qt.exe
+    make install
+    cd dist/bin
+    strip fujicoin-cli.exe fujicoind.exe fujicoin-qt.exe fujicoin-tx.exe
+
 
 ## Depends system
 
